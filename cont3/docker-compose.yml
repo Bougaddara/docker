@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  servidor4:
+    image: eq4
+    container_name: eq4
+    ports:
+      - 8082:8080
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - USUARIO=mohamed
+      - PASSWD=Mohamed1.*
+    networks:
+        netbase:
+            ipv4_address: 172.130.7.14
+networks:
+  netbase:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.130.7.0/24

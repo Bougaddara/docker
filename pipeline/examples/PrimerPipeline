@@ -1,0 +1,27 @@
+pipeline {  
+  agent any  
+  stages { 
+   // se arranca con Build pero podríamos arrancar con una etapa anterior para CLONAR el repositorio 
+    	stage('Build') {  
+        	steps {  
+		     sh 'echo "construyendo la aplicación"'
+		     sh '''
+		        echo "varias acciones de shell"
+		        pwd 
+		        whoami
+		     '''
+        	} 
+    	} 
+    	stage('Test'){ 
+        	steps { 
+                echo 'ejecutar pruebas unitarias'
+        	} 
+    	} 
+    	stage('Deploy') { 
+            steps { 
+		     echo 'desplegar entorno de desarrollo'
+        	} 
+    	} 
+ // podría haber otro etapa posterior
+	} 
+} 

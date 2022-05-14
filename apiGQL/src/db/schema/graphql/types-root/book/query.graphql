@@ -1,0 +1,6 @@
+
+type Query {
+    hello: String!
+    bookList: [Book!]!
+    bookId(id:ID!): Result!
+}

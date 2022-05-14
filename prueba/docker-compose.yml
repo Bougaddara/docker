@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  servidor1:
+    image: proyectovuephp
+    container_name: servidor
+    ports:
+      - 8083:80
+    volumes:
+      - ./laravel/:/var/www/html
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - USUARIO=mohamed
+      - PASSWD=Mohamed1.*
+      - PROYECTO=EMDE
+    networks:
+      netbase:
+        ipv4_address: 172.120.19.5
+networks:
+  netbase:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.120.19.0/24

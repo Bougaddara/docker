@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  servidor1:
+    image: proyectobase_s1
+    container_name: servidor1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - USUARIO=mohamed
+      - PASSWD=1234
+    networks:
+        netbase:
+            ipv4_address: 172.130.10.5
+networks:
+  netbase:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.130.10.0/24

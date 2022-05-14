@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+  servidor1:
+    image: mysql
+    container_name: mysql
+    ports:
+      - 8084:3306
+    volumes:
+      - ./laravel/:/var/www/html
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - USUARIO=mohamed
+      - PASSWD=Mohamed1.*
+    networks:
+      netbase:
+        ipv4_address: 172.120.20.10
+networks:
+  netbase:
+    ipam:
+     driver: default
+     config:
+        - subnet: 172.120.20.0/24
